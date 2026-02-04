@@ -22,6 +22,11 @@ public class Player {
     public void attack(Player other){
         other.takeDamage(this.damageDealt);
     }
+    public String toString(){
+        String out="("+this.HP+"/"+this.maxHP+") damage: ";
+        out+=this.damageDealt;
+        return out;
+    }
 
     public static void main(String[] args) {
         Player p1=new Player(20);
