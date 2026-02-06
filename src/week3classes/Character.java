@@ -13,10 +13,20 @@ public class Character {
         this.xp+=xp;
     }
 
-    @Override
+
     public String toString() {
         String out="battles won: "+this.battlesWon;
         out+=" xp: "+this.xp;
         return out;
+    }
+    public boolean equals(Character other){
+        return this.battlesWon==other.battlesWon &&
+                this.xp==other.xp;
+    }
+
+    public static void main(String[] args) {
+        Character c1=new Character();
+        Character c2=new Character();
+        System.out.println(c1.equals(c2));
     }
 }
