@@ -40,6 +40,15 @@ public class LLN <G>{
         }
 
     }
+    public G getValue(){
+        return this.value;
+    }
+    public LLN getNext(){
+        return this.next;
+    }
+    public void setNext(LLN next){
+        this.next=next;
+    }
     public void insert(G value, int loc){
         //puts the value into location loc in hte list moving everything
         //else
