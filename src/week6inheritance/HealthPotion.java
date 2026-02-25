@@ -1,6 +1,5 @@
 package week6inheritance;
 
-import week3classes.Player;
 
 public class HealthPotion extends GameItem{
     private int increase;
@@ -12,6 +11,7 @@ public class HealthPotion extends GameItem{
     }
     public void use(Player player){
         //this.xLoc+=6;
+        player.takeDamage(-this.increase);
     }
     @Override
     public String toString() {

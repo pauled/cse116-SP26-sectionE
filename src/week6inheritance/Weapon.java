@@ -10,6 +10,9 @@ public class Weapon extends GameItem{
     public void move(double x,double y){
         super.move(2*x,2*y);
     }
+    public void use(Player player){
+        player.takeDamage(this.damage);
+    }
 
     @Override
     public String toString() {
