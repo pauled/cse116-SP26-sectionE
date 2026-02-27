@@ -1,7 +1,7 @@
 package week6inheritance;
 
 
-public class HealthPotion extends GameItem{
+public class HealthPotion extends Location implements Usable{
     private int increase;
 
     public HealthPotion(double x,double y,int increase){
