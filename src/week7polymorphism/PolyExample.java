@@ -14,5 +14,8 @@ public class PolyExample {
         inventory.add(l);
         l=new Weapon(3,4,5);
         inventory.add(l);
+        Location l2=(Location)l;
+        //l.move(2,3);
+        l2.move(2,3);
     }
 }
