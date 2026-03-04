@@ -1,10 +1,13 @@
 package week6inheritance;
 
+import java.util.ArrayList;
+
 //modify Player so it inherits from GameItem
 public class Player extends Location{
     private int maxHP;
     private int HP;
     private int damageDealt;
+    private ArrayList<Usable> inventory=new ArrayList<>();
 
     public Player(int maxHP,double x,double y){
         super(x,y);
@@ -17,6 +20,23 @@ public class Player extends Location{
         this.maxHP=maxHP;
         this.HP=maxHP;
         this.damageDealt=4;
+    }
+    public void pickup(Usable item){
+        this.inventory.add(item);
+    }
+    public void useItem(int itemLoc,Player other){
+        if (itemLoc<this.inventory.size()){
+            this.inventory.get(itemLoc).use(other);
+        }
+    }
+    public String listHealthPotions(){
+        String out="";
+        for (int x =0;x<this.inventory.size();x++){
+            if (this.inventory.get(x) instanceof HealthPotion){
+                out+=x+": "+this.inventory.get(x)+"\n";
+            }
+        }
+        return out;
     }
     public void setDamageDealt(int damage){
         this.damageDealt=damage;
@@ -47,5 +67,12 @@ public class Player extends Location{
         Player p3=p1;
         System.out.println(p1);
         System.out.println(p2);
+        p1.pickup(new Weapon(1,2,3));
+        p1.pickup(new HealthPotion(4,5,6));
+        p1.pickup(new HealthPotion(7,8,9));
+        p1.pickup(new Weapon(10,11,12));
+        p1.pickup(new HealthPotion(13,14,15));
+        System.out.println(p1.listHealthPotions());
+        p1.useItem(0,p2);
     }
 }
