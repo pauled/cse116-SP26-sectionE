@@ -38,6 +38,19 @@ public class Player extends Location{
         }
         return out;
     }
+
+    public int getMaxHP() {
+        return maxHP;
+    }
+
+    public int getHP() {
+        return HP;
+    }
+
+    public ArrayList<Usable> getInventory() {
+        return inventory;
+    }
+
     public void setDamageDealt(int damage){
         this.damageDealt=damage;
     }

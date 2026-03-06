@@ -12,6 +12,15 @@ public class Location {
         this.xLoc+=dx;
         this.yLoc+=dy;
     }
+
+    public double getxLoc() {
+        return xLoc;
+    }
+
+    public double getyLoc() {
+        return yLoc;
+    }
+
     @Override
     public String toString() {
         String out="("+this.xLoc+","+this.yLoc+") ";

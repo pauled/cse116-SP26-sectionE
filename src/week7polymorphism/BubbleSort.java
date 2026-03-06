@@ -41,6 +41,7 @@ public class BubbleSort <T>{
         output=sorter.sort(list);
         System.out.println(output);
 
+        sorter=new BubbleSort(new PlayerOrder());
         ArrayList<Player> players=new ArrayList<>();
         players.add(new Player(8,1,2));
         players.add(new Player(10,3,4));
