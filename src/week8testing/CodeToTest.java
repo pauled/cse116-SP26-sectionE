@@ -2,6 +2,8 @@ package week8testing;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -11,12 +13,14 @@ public class CodeToTest {
     }
     @Test
     public void testSubtract(){
-        assertEquals("subtract(8,5)",3,subtract(8,5));
-        assertEquals("subtract(0,7)",-6,subtract(0,7));
-        assertEquals("subtract(8,2)",6,subtract(8,2));
-        assertTrue(3==subtract(8,5));
-        assertTrue(-6==subtract(0,7));
-        assertTrue(6==subtract(8,2));
+        ArrayList<TestSubtractHelper> tests=new ArrayList<>();
+        tests.add(new TestSubtractHelper(8,5,3));
+        tests.add(new TestSubtractHelper(0,7,-6));
+        tests.add(new TestSubtractHelper(8,2,6));
+
+        for (TestSubtractHelper test : tests){
+            test.runTest();
+        }
     }
 
     public static void main(String[] args) {
