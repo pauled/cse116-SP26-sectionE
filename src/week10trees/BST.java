@@ -55,8 +55,9 @@ public class BST<A> {
         BST<Integer> bst=new BST<>(new IntIncreasing());
         bst.insert(5);
         bst.insert(3);
+        bst.insert(0);
         bst.insert(1);
-        bst.insert(8);
+        bst.find(2);
         System.out.println(bst.traverseInOrder());
     }
 }
