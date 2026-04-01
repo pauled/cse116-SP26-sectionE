@@ -1,6 +1,65 @@
 package week11efficiency;
 
+import java.util.Random;
+
 public class Sort {
+    public static int[] bubbleSortDumb(int[] out){
+        for (int x=0;x<out.length;x++){
+            for (int y=0;y< out.length-x-1;y++){
+                if(out[y]>out[y+1]){
+                    int temp=out[y];
+                    out[y]=out[y+1];
+                    out[y+1]=temp;
+                }
+            }
+        }
+        return out;
+    }
+    public static int[] bubbleSort(int[] out){
+        boolean swap=true;
+        int less=0;
+        while (swap){
+            swap=false;
+            for (int y=0;y< out.length-1-less;y++){
+                if(out[y]>out[y+1]){
+                    swap=true;
+                    int temp=out[y];
+                    out[y]=out[y+1];
+                    out[y+1]=temp;
+                }
+            }
+            less++;
+        }
+        return out;
+    }
+    public static int[] combine(int[] half1,int[] half2){
+        int loc1=0;
+        int loc2=0;
+        int locOut=0;
+        int[] out=new int[half1.length+half2.length];
+        while (loc1<half1.length && loc2<half2.length){
+            if (half1[loc1]<half2[loc2]){
+                out[locOut]=half1[loc1];
+                loc1++;
+                locOut++;
+            } else {
+                out[locOut]=half2[loc2];
+                loc2++;
+                locOut++;
+            }
+        }
+        while (loc1<half1.length){
+            out[locOut]=half1[loc1];
+            loc1++;
+            locOut++;
+        }
+        while (loc2<half2.length){
+            out[locOut]=half2[loc2];
+            loc2++;
+            locOut++;
+        }
+        return out;
+    }
     public static int[] mergeSort(int[] data){
         if (data.length==1){
             return data;
@@ -24,6 +83,43 @@ public class Sort {
             int[] sorted2=mergeSort(half2);
             int[] out=combine(sorted1,sorted2);
             return out;
+        }
+    }
+
+    public static void main(String[] args) {
+        Random randomGenerator=new Random();
+        for (int z=10;z<1000000000;z*=2){
+            System.out.println("\n----------------");
+            int size=z;
+            int[] randData1=new int[size];
+            int[] randData2=new int[size];
+            int[] randData3=new int[size];
+            for (int x=0;x<size;x++){
+                randData1[x]=randomGenerator.nextInt();
+                randData2[x]=randomGenerator.nextInt();
+                randData3[x]=randomGenerator.nextInt();
+            }
+
+            TimeMe timer=new TimeMe();
+            timer.start();
+            int[] sorted=mergeSort(randData1);
+            timer.lap();
+            System.out.println("Merge sort with "+size+" entries");
+            timer.printTime();
+
+            timer=new TimeMe();
+            timer.start();
+            int[] sorted2=bubbleSortDumb(randData2);
+            timer.lap();
+            System.out.println("Bubblee sort dumb with "+size+" entries");
+            timer.printTime();
+
+            timer=new TimeMe();
+            timer.start();
+            int[] sorted3=bubbleSort(randData3);
+            timer.lap();
+            System.out.println("Bubblee sort with "+size+" entries");
+            timer.printTime();
         }
     }
 }
