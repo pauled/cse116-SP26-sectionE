@@ -1,6 +1,7 @@
 package week12graphs;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 public class Graph <N> {
@@ -31,6 +32,52 @@ public class Graph <N> {
         }
         return out;
     }
+    public boolean validPath(ArrayList<N> path){
+        //look for invalid pair
+        for (int x=0;x<path.size()-1;x++){
+            N from=path.get(x);
+            N to=path.get(x+1);
+            if (! connected(from,to)){
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean connected(N from,N to){
+        ArrayList<N> destinations=this.adjacencyList.get(from);
+        for (N dest : destinations){
+            if (dest.equals(to)){
+                return true;
+            }
+        }
+        return false;
+    }
+    public ArrayList<N> mostIncoming(){
+        HashMap<N,Integer> counts=new HashMap<>();
+        for (N from : this.adjacencyList.keySet()){
+            ArrayList<N> destinations=this.adjacencyList.get(from);
+            for (N to : destinations){
+                if (counts.containsKey(to)){
+                    counts.put(to,counts.get(to)+1);
+                } else {
+                    counts.put(to,1);
+                }
+            }
+        }
+        ArrayList<N> out=new ArrayList<>();
+        int most=0;
+        for (N key : counts.keySet()){
+            Integer temp=counts.get(key);
+            if (temp>most){
+                most=temp;
+                out=new ArrayList<>();
+            }
+            if (temp==most){
+                out.add(key);
+            }
+        }
+        return out;
+    }
 
     public static void main(String[] args) {
         Graph<String> graph=new Graph<>();
@@ -46,5 +93,18 @@ public class Graph <N> {
         graph.addEdge("F","G");
         graph.addEdge("G","H");
         System.out.println(graph);
+        System.out.println(graph.mostIncoming());
+
+        ArrayList<String> path=new ArrayList<>(Arrays.asList("A","B","E"));
+        System.out.println(graph.validPath(path));
+
+        ArrayList<String> path2=new ArrayList<>(Arrays.asList("A","B","E","D","F","G"));
+        System.out.println(graph.validPath(path2));
+
+        ArrayList<String> path3=new ArrayList<>(Arrays.asList("F","B","E"));
+        System.out.println(graph.validPath(path3));
+
+        ArrayList<String> path4=new ArrayList<>(Arrays.asList("A","B","E","D","F","G","B"));
+        System.out.println(graph.validPath(path4));
     }
 }
