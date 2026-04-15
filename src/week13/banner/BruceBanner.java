@@ -27,12 +27,10 @@ public class BruceBanner {
 
     public static void main(String[] args) {
         BruceBanner bruce=new BruceBanner();
-        Car car=new Car();
-        bruce.useCar(car);
         bruce.fight();
         bruce.makeAngry();
-        bruce.useCar(car);
-        bruce.makeAngry();
         bruce.fight();
+        bruce.makeAngry();
+        //bruce.fight();
     }
 }
