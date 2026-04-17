@@ -19,6 +19,15 @@ public class Student {
         this.state.expressFeelings();
     }
     public void passClass(){
-        this.state=new Chillin(this);
+        this.state.passClass();
+    }
+    public void startNewSemester(){
+        this.state.startNewSemester();
+    }
+    public void failClass(){
+        this.state.failClass();
+    }
+    public void getBurnedOut(){
+        this.state.getBurnedOut();
     }
 }

@@ -9,4 +9,13 @@ public abstract class MentalState {
     public abstract void study();
     public abstract void getCloserToExam();
     public abstract void expressFeelings();
+    public void startNewSemester(){
+        System.out.println("you can't start a new semester beffore finishing the last one");
+    }
+    public void passClass(){
+        this.brain.setState(new Chillin(this.brain));
+    }
+    public void failClass(){
+        this.brain.setState(new Depression(this.brain));
+    }
 }
