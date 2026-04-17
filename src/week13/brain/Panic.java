@@ -13,4 +13,8 @@ public class Panic extends MentalState{
     public void expressFeelings(){
         System.out.println("I am firmly at the disco");
     }
+    public void getBurnedOut(){
+        System.out.println("I will withdraw from classes");
+        super.getBurnedOut();
+    }
 }

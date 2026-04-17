@@ -18,4 +18,8 @@ public abstract class MentalState {
     public void failClass(){
         this.brain.setState(new Depression(this.brain));
     }
+    public void getBurnedOut(){
+        System.out.println("I need to take a semester away");
+        this.brain.setState(new BurnedOut(this.brain));
+    }
 }

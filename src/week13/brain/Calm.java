@@ -13,4 +13,8 @@ public class Calm extends MentalState{
     public void expressFeelings(){
         System.out.println("I am a leaf on the wind!");
     }
+    public void getBurnedOut(){
+        System.out.println("I will withdraw from classes");
+        super.getBurnedOut();
+    }
 }
